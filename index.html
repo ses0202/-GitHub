@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="АТЛАС ДРАЙВ — новые и проверенные автомобили с пробегом в Москве. Подбор, кредит, trade-in, тест-драйв.">
+  <title>АТЛАС ДРАЙВ — автосалон новых и проверенных авто</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+/* АТЛАС ДРАЙВ — палитра и ритм. Mobile-first. */
+:root {
+  --bg: #101214;
+  --bg-2: #181b1f;
+  --paper: #f2eee6;
+  --paper-2: #e7e1d6;
+  --ink: #14161a;
+  --muted: #6a6e75;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-dark: rgba(20, 22, 26, 0.12);
+  --accent: #d2652b;
+  --accent-hover: #e0783c;
+  --accent-press: #b45220;
+  --cream: #efe8db;
+  --radius: 4px;
+  --shadow: 0 18px 40px rgba(16, 18, 20, 0.18);
+  --font: "Plus Jakarta Sans", system-ui, sans-serif;
+  --display: "Instrument Serif", Georgia, serif;
+  --space: clamp(1.25rem, 4vw, 2.5rem);
+  --max: 1120px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--cream);
+  background: var(--bg);
+  line-height: 1.55;
+  font-size: 16px;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.2rem, 6vw, 4.4rem); margin: 0 0 1rem; }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin: 0 0 0.5rem; }
+h3 { font-size: 1.35rem; margin: 0 0 0.5rem; }
+
+p { margin: 0 0 1rem; color: #c5c1b8; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  z-index: 100;
+}
+.skip-link:focus { top: 0.5rem; }
+
+.container {
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 48px;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font: 600 0.95rem/1 var(--font);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s;
+}
+.btn:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:active { background: var(--accent-press); }
+.btn-primary:disabled {
+  background: #5c3a2c;
+  color: #b9a89f;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: transparent;
+  border-color: rgba(239, 232, 219, 0.35);
+  color: var(--cream);
+}
+.btn-ghost:hover { border-color: #fff; }
+.btn-text {
+  background: none;
+  border: 0;
+  color: var(--accent);
+  min-height: 40px;
+  padding: 0;
+  align-self: end;
+}
+.btn-text:hover { text-decoration: underline; }
+
+/* Шапка */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(16, 18, 20, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 64px;
+}
+.logo {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+.logo span { color: var(--accent); }
+.logo-mark {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  display: inline-block;
+  transform: rotate(45deg);
+}
+.header-phone {
+  display: none;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.nav-toggle {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 0;
+  display: grid;
+  gap: 6px;
+  place-content: center;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--cream);
+}
+.site-nav {
+  display: none;
+  position: absolute;
+  inset: 64px 0 auto 0;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 1.25rem 1.25rem;
+}
+.site-nav.is-open { display: block; }
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.site-nav a {
+  text-decoration: none;
+  font-weight: 500;
+}
+.site-nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  align-items: end;
+  padding: 5rem 0 3rem;
+  overflow: hidden;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.05);
+}
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 18, 20, 0.2) 0%, rgba(16, 18, 20, 0.88) 78%),
+    linear-gradient(90deg, rgba(16, 18, 20, 0.55), transparent 55%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 40rem; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.lead { font-size: 1.05rem; max-width: 36rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 2rem; }
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+.hero-stats dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9a958c;
+}
+.hero-stats dd {
+  margin: 0.2rem 0 0;
+  font-family: var(--display);
+  font-size: 1.4rem;
+}
+
+/* Секции */
+.section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.section-head {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.section-index {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin: 0;
+}
+.catalog { background: var(--paper); color: var(--ink); }
+.catalog p, .calc-section p { color: #5c5a56; }
+.catalog h2, .calc-section h2, .trust h2, .contact h2 { color: inherit; }
+
+.filters {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+.filters label,
+.td-form label,
+.calc-card label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5c5a56;
+}
+select, input, textarea {
+  font: 500 1rem/1.3 var(--font);
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.75rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+select:hover, input:hover, textarea:hover { border-color: #9a8f82; }
+.catalog-count { font-size: 0.9rem; margin-bottom: 1rem; }
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+.car-card {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+.car-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #ddd;
+}
+.car-card .body { padding: 1rem 1.1rem 1.15rem; }
+.car-card .meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+.car-card h3 { margin: 0 0 0.35rem; color: var(--ink); }
+.car-card .price {
+  font-family: var(--display);
+  font-size: 1.55rem;
+  margin: 0.4rem 0 0.9rem;
+}
+.car-card .row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.empty-state { color: #7a756c; }
+
+/* Преимущества */
+.advantages { background: var(--bg-2); }
+.adv-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.adv-grid li {
+  background: var(--bg);
+  padding: 1.5rem 1.25rem;
+}
+.adv-grid p { color: #b7b2a8; }
+.adv-grid a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.adv-grid a:hover { text-decoration: underline; }
+
+/* Калькулятор */
+.calc-section { background: var(--paper); color: var(--ink); }
+.calc-layout { display: grid; gap: 1.5rem; }
+.calc-card, .calc-result {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+.calc-card fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 1rem; }
+input[type="range"] { padding: 0; accent-color: var(--accent); }
+.check {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.95rem !important;
+  color: var(--ink) !important;
+}
+.check input { width: auto; accent-color: var(--accent); }
+.calc-result .result-label { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.12em; }
+.result-sum {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+.calc-result ul { list-style: none; margin: 0 0 1.25rem; padding: 0; }
+.calc-result li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--line-dark);
+  color: #5c5a56;
+}
+
+/* Доверие */
+.trust { background: var(--bg); }
+.trust-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.trust-numbers strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 2.4rem;
+  color: var(--accent);
+}
+.trust-numbers span { color: #9a958c; font-size: 0.9rem; }
+.reviews { display: grid; gap: 1rem; }
+.review {
+  border: 1px solid var(--line);
+  padding: 1.25rem;
+  background: var(--bg-2);
+}
+.stars { color: var(--accent); margin: 0 0 0.6rem; letter-spacing: 0.15em; }
+.review footer { color: #8d8980; font-size: 0.85rem; }
+.certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 1.5rem 0 0;
+  margin: 0;
+}
+.certs li {
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.82rem;
+  color: #c5c1b8;
+}
+
+/* Контакты */
+.contact { background: var(--paper); color: var(--ink); }
+.contact-layout { display: grid; gap: 2rem; }
+.td-form { display: grid; gap: 0.9rem; }
+.field-error { color: #b42318; font-size: 0.8rem; min-height: 0; text-transform: none; letter-spacing: 0; font-weight: 500; }
+input.is-invalid, select.is-invalid { border-color: #b42318; }
+.form-success { color: #1f6f57; font-weight: 600; }
+.contacts-card iframe {
+  width: 100%;
+  height: 220px;
+  border: 0;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+address { font-style: normal; line-height: 1.7; }
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 0;
+  font-size: 0.85rem;
+  color: #8d8980;
+}
+.footer-inner { display: flex; justify-content: space-between; gap: 1rem; }
+.site-footer a { color: var(--cream); }
+
+/* Диалог карточки */
+.car-dialog {
+  width: min(92vw, 560px);
+  border: 0;
+  padding: 0;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 8px;
+}
+.car-dialog::backdrop { background: rgba(16, 18, 20, 0.62); }
+.dialog-close {
+  position: absolute;
+  right: 0.4rem;
+  top: 0.3rem;
+  border: 0;
+  background: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.car-dialog img { width: 100%; height: 220px; object-fit: cover; }
+.dialog-copy { padding: 1.2rem 1.3rem 1.5rem; }
+
+@media (min-width: 720px) {
+  .filters {
+    grid-template-columns: repeat(4, 1fr) auto;
+    align-items: end;
+  }
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .adv-grid { grid-template-columns: 1fr 1fr; }
+  .calc-layout {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+  .calc-layout .section-head { grid-column: 1 / -1; }
+  .trust-numbers { grid-template-columns: repeat(4, 1fr); }
+  .reviews { grid-template-columns: repeat(3, 1fr); }
+  .contact-layout { grid-template-columns: 1.1fr 0.9fr; }
+  .header-phone { display: inline; }
+}
+
+@media (min-width: 960px) {
+  .nav-toggle { display: none; }
+  .site-nav {
+    display: block;
+    position: static;
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+  .site-nav ul {
+    display: flex;
+    gap: 1.35rem;
+  }
+  .card-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
+
+</style>
+</head>
+<body>
+  <!-- Пропуск к контенту: WCAG 2.4.1 -->
+  <a class="skip-link" href="#main">К основному содержимому</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="АТЛАС ДРАЙВ — на главную">
+        <span class="logo-mark" aria-hidden="true"></span>
+        АТЛАС<span>ДРАЙВ</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="navToggle">
+        <span class="sr-only">Меню</span>
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Основное меню">
+        <ul>
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#advantages">Почему мы</a></li>
+          <li><a href="#calc">Кредит</a></li>
+          <li><a href="#trust">Отзывы</a></li>
+          <li><a href="#testdrive">Тест-драйв</a></li>
+        </ul>
+      </nav>
+      <a class="header-phone" href="tel:+74951204590">+7 495 120-45-90</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1. Hero: знакомство и главный оффер -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=70"
+          alt="Тёмный седан в студийном свете — витрина автосалона АТЛАС ДРАЙВ"
+          width="1800"
+          height="1100">
+      </div>
+      <div class="container hero-content">
+        <p class="eyebrow">Москва · новые и с пробегом</p>
+        <h1 id="hero-title">Авто, которое можно проверить до сделки — не после.</h1>
+        <p class="lead">Открытый пробег, история по VIN, понятный платёж и тест-драйв в день обращения. Без скрытых комиссий в карточке.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#catalog">Подобрать авто</a>
+          <a class="btn btn-ghost" href="#testdrive">Записаться на тест-драйв</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>в наличии</dt><dd>86 авто</dd></div>
+          <div><dt>гарантия на б/у</dt><dd>24 мес.</dd></div>
+          <div><dt>кредит от</dt><dd>4,9%</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 2. Каталог: подбор по фильтрам -->
+    <section class="section catalog" id="catalog" aria-labelledby="catalog-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-index">01</p>
+          <div>
+            <h2 id="catalog-title">Подбор из наличия</h2>
+            <p>Фильтры работают сразу по карточкам. Цены — как на складе, без «от».</p>
+          </div>
+        </header>
+
+        <form class="filters" id="filterForm" aria-label="Фильтры каталога">
+          <label>
+            Марка
+            <select name="brand" id="filterBrand">
+              <option value="all">Все марки</option>
+              <option value="BMW">BMW</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Haval">Haval</option>
+              <option value="Kia">Kia</option>
+              <option value="Tesla">Tesla</option>
+              <option value="Volkswagen">Volkswagen</option>
+              <option value="Geely">Geely</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+            </select>
+          </label>
+          <label>
+            Цена
+            <select name="price" id="filterPrice">
+              <option value="all">Любая</option>
+              <option value="0-2500000">до 2,5 млн ₽</option>
+              <option value="2500000-4000000">2,5–4 млн ₽</option>
+              <option value="4000000-99999999">от 4 млн ₽</option>
+            </select>
+          </label>
+          <label>
+            Кузов
+            <select name="body" id="filterBody">
+              <option value="all">Любой</option>
+              <option value="sedan">Седан</option>
+              <option value="suv">Кроссовер / SUV</option>
+              <option value="hatch">Хэтчбек</option>
+            </select>
+          </label>
+          <label>
+            Год
+            <select name="year" id="filterYear">
+              <option value="all">Любой</option>
+              <option value="2024">2024+</option>
+              <option value="2021">2021–2023</option>
+              <option value="2018">2018–2020</option>
+            </select>
+          </label>
+          <button class="btn btn-text" type="reset" id="filterReset">Сбросить</button>
+        </form>
+
+        <p class="catalog-count" id="catalogCount" aria-live="polite"></p>
+        <div class="card-grid" id="carGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>Нет авто по фильтрам. Сбросьте условия или оставьте заявку — подберём со склада партнёров.</p>
+      </div>
+    </section>
+
+    <!-- 3. Преимущества: доверие до калькулятора -->
+    <section class="section advantages" id="advantages" aria-labelledby="adv-title">
+      <div class="container">
+        <header class="section-head invert">
+          <p class="section-index">02</p>
+          <div>
+            <h2 id="adv-title">Что снимает риск покупки</h2>
+            <p>Четыре сервиса, без которых карточку не публикуем.</p>
+          </div>
+        </header>
+        <ul class="adv-grid">
+          <li>
+            <h3>Диагностика 86 точек</h3>
+            <p>Ходовая, ЛКП, ЭБУ, утечки. Отчёт в PDF прикреплён к каждому авто с пробегом.</p>
+            <a href="#testdrive">Смотреть образец отчёта</a>
+          </li>
+          <li>
+            <h3>Гарантия 24 месяца</h3>
+            <p>Двигатель, КПП и электрика. Ремонт в нашем сервисе или выплата по калькуляции.</p>
+            <a href="#testdrive">Условия гарантии</a>
+          </li>
+          <li>
+            <h3>Trade-in за 40 минут</h3>
+            <p>Осмотр на месте, сумма фиксируется в договоре. Можно сразу в зачёт первого взноса.</p>
+            <a href="#calc">Оценить свой авто</a>
+          </li>
+          <li>
+            <h3>Кредит и лизинг</h3>
+            <p>8 банков, лизинг для ИП. Ставка на экране — не «от», а расчёт по выбранному авто.</p>
+            <a href="#calc">Рассчитать платёж</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Калькулятор кредита и trade-in -->
+    <section class="section calc-section" id="calc" aria-labelledby="calc-title">
+      <div class="container calc-layout">
+        <header class="section-head">
+          <p class="section-index">03</p>
+          <div>
+            <h2 id="calc-title">Платёж до звонка менеджеру</h2>
+            <p>Меняйте взнос, срок и trade-in — сумма обновляется сразу. Это ориентир, не оферта банка.</p>
+          </div>
+        </header>
+
+        <form class="calc-card" id="creditForm">
+          <fieldset>
+            <legend class="sr-only">Параметры кредита</legend>
+            <label>
+              Стоимость авто, ₽
+              <input type="number" id="carPrice" min="400000" max="15000000" step="50000" value="2890000">
+            </label>
+            <label>
+              Первый взнос, ₽
+              <input type="range" id="downPayment" min="0" max="2890000" step="10000" value="580000">
+              <output id="downOut">580 000 ₽</output>
+            </label>
+            <label>
+              Срок, мес.
+              <input type="range" id="termMonths" min="12" max="84" step="12" value="60">
+              <output id="termOut">60 мес.</output>
+            </label>
+            <label>
+              Ставка, % годовых
+              <input type="range" id="rate" min="4.9" max="22" step="0.1" value="11.9">
+              <output id="rateOut">11,9%</output>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="useTradein">
+              Учесть trade-in в первом взносе
+            </label>
+            <label id="tradeinWrap" hidden>
+              Оценка вашего авто, ₽
+              <input type="number" id="tradeinValue" min="0" max="8000000" step="10000" value="650000">
+            </label>
+          </fieldset>
+        </form>
+
+        <aside class="calc-result" aria-live="polite">
+          <p class="result-label">Ежемесячный платёж</p>
+          <p class="result-sum" id="monthlyPay">—</p>
+          <ul>
+            <li>Кредит <span id="loanAmount">—</span></li>
+            <li>Переплата <span id="overpay">—</span></li>
+            <li>Итого к возврату <span id="totalPay">—</span></li>
+          </ul>
+          <a class="btn btn-primary" href="#testdrive">Оставить заявку на одобрение</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 5. Отзывы и цифры доверия -->
+    <section class="section trust" id="trust" aria-labelledby="trust-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-index">04</p>
+          <div>
+            <h2 id="trust-title">Не слоган, а след сделок</h2>
+            <p>Цифры с 2021 года. Отзывы — с именем, моделью и датой, не «анонимный клиент».</p>
+          </div>
+        </header>
+
+        <div class="trust-numbers">
+          <div><strong data-count="1240">0</strong><span>проданных авто</span></div>
+          <div><strong data-count="24">0</strong><span>месяца гарантии</span></div>
+          <div><strong data-count="4">0</strong><span>часа средний подбор</span></div>
+          <div><strong>4,8</strong><span>оценка на Яндексе</span></div>
+        </div>
+
+        <div class="reviews">
+          <article class="review">
+            <p class="stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <p>Брали Camry 2022. VIN пробили при мне, кузовной отчёт показали до предоплаты. Платёж совпал с калькулятором на сайте — редкость.</p>
+            <footer>Анна К. · Toyota Camry · март 2026</footer>
+          </article>
+          <article class="review">
+            <p class="stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <p>Сдали Polo в trade-in, разницу закрыли кредитом за один визит. Тест-драйв Jolion — без «подождите менеджера 40 минут».</p>
+            <footer>Игорь С. · Haval Jolion · январь 2026</footer>
+          </article>
+          <article class="review">
+            <p class="stars" aria-label="Оценка 4 из 5">★★★★☆</p>
+            <p>По Model 3 торг занял день, но историю батареи и сервис Tesla отдали сразу. Минус: очередь на оформление в субботу.</p>
+            <footer>Марат Д. · Tesla Model 3 · декабрь 2025</footer>
+          </article>
+        </div>
+
+        <ul class="certs">
+          <li>Официальный партнёр 6 банков</li>
+          <li>Диагностика по регламенту АСД</li>
+          <li>Работаем по 54-ФЗ, чек в день сделки</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. Тест-драйв и контакты -->
+    <section class="section contact" id="testdrive" aria-labelledby="td-title">
+      <div class="container contact-layout">
+        <div>
+          <header class="section-head">
+            <p class="section-index">05</p>
+            <div>
+              <h2 id="td-title">Запись на тест-драйв</h2>
+              <p>Ответим в рабочее время за 15 минут. Поля с * обязательны.</p>
+            </div>
+          </header>
+
+          <form class="td-form" id="tdForm" novalidate>
+            <label>
+              Имя *
+              <input type="text" name="name" id="tdName" autocomplete="name" required minlength="2">
+              <span class="field-error" data-for="tdName"></span>
+            </label>
+            <label>
+              Телефон *
+              <input type="tel" name="phone" id="tdPhone" autocomplete="tel" inputmode="tel" required placeholder="+7 900 000-00-00">
+              <span class="field-error" data-for="tdPhone"></span>
+            </label>
+            <label>
+              Авто для теста
+              <select name="car" id="tdCar">
+                <option value="">Подберёте менеджер</option>
+              </select>
+            </label>
+            <label>
+              Комментарий
+              <textarea name="comment" id="tdComment" rows="3" maxlength="400" placeholder="Удобное время, trade-in, кредит"></textarea>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="tdAgree" required>
+              Согласен на обработку данных для записи
+            </label>
+            <span class="field-error" data-for="tdAgree"></span>
+            <button class="btn btn-primary" type="submit">Записаться</button>
+            <p class="form-success" id="tdSuccess" hidden role="status">Заявка принята. Перезвоним с номера салона +7 495 120-45-90.</p>
+          </form>
+        </div>
+
+        <aside class="contacts-card" aria-labelledby="contacts-title">
+          <h3 id="contacts-title">Салон на Ленинградке</h3>
+          <address>
+            Москва, Ленинградский пр-т, 80к17<br>
+            <a href="tel:+74951204590">+7 495 120-45-90</a><br>
+            ежедневно 09:00–21:00
+          </address>
+          <iframe
+            title="Карта: АТЛАС ДРАЙВ, Ленинградский проспект"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=37.532%2C55.791%2C37.555%2C55.803&amp;layer=mapnik&amp;marker=55.797%2C37.543"></iframe>
+          <a class="btn btn-ghost" href="https://yandex.ru/maps/?text=Москва%20Ленинградский%20проспект%2080" rel="noopener noreferrer" target="_blank">Открыть в картах</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 АТЛАС ДРАЙВ. Учебный макет главной страницы, лабораторная №2.</p>
+      <a href="#top">Наверх</a>
+    </div>
+  </footer>
+
+  <!-- Модалка карточки авто -->
+  <dialog class="car-dialog" id="carDialog" aria-labelledby="dialogTitle">
+    <form method="dialog">
+      <button class="dialog-close" value="close" aria-label="Закрыть">×</button>
+    </form>
+    <div id="dialogBody"></div>
+  </dialog>
+
+  <script>
+/* Каталог, фильтры, кредит/trade-in, форма тест-драйва */
+
+const CARS = [
+  { id: 1, brand: "Toyota", model: "Camry", year: 2022, price: 2890000, body: "sedan", km: 41000, img: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=70", alt: "Toyota Camry белого цвета, вид спереди" },
+  { id: 2, brand: "Haval", model: "Jolion", year: 2024, price: 2299000, body: "suv", km: 12000, img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0fe6?auto=format&fit=crop&w=800&q=70", alt: "Кроссовер Haval Jolion на дороге" },
+  { id: 3, brand: "BMW", model: "320d", year: 2021, price: 3750000, body: "sedan", km: 54000, img: "https://images.unsplash.com/photo-1555215695-300b176ab4b5?auto=format&fit=crop&w=800&q=70", alt: "BMW 3 серии серого цвета" },
+  { id: 4, brand: "Kia", model: "Sportage", year: 2023, price: 3180000, body: "suv", km: 21000, img: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=800&q=70", alt: "Kia Sportage кроссовер" },
+  { id: 5, brand: "Tesla", model: "Model 3", year: 2022, price: 4290000, body: "sedan", km: 28000, img: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=70", alt: "Tesla Model 3 красного цвета" },
+  { id: 6, brand: "Volkswagen", model: "Golf", year: 2020, price: 1890000, body: "hatch", km: 67000, img: "https://images.unsplash.com/photo-1617814076367-b759c7d16f1f?auto=format&fit=crop&w=800&q=70", alt: "Volkswagen Golf хэтчбек" },
+  { id: 7, brand: "Geely", model: "Monjaro", year: 2024, price: 3650000, body: "suv", km: 8000, img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=70", alt: "Geely Monjaro кроссовер" },
+  { id: 8, brand: "Mercedes-Benz", model: "C 200", year: 2019, price: 2590000, body: "sedan", km: 89000, img: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=70", alt: "Mercedes-Benz C-класса" }
+];
+
+const BODY_LABEL = { sedan: "Седан", suv: "SUV", hatch: "Хэтчбек" };
+
+const grid = document.getElementById("carGrid");
+const countEl = document.getElementById("catalogCount");
+const emptyEl = document.getElementById("emptyState");
+const tdCar = document.getElementById("tdCar");
+
+function money(n) {
+  return new Intl.NumberFormat("ru-RU").format(Math.round(n)) + " ₽";
+}
+
+function yearBucket(year, filter) {
+  if (filter === "all") return true;
+  if (filter === "2024") return year >= 2024;
+  if (filter === "2021") return year >= 2021 && year <= 2023;
+  if (filter === "2018") return year >= 2018 && year <= 2020;
+  return true;
+}
+
+function priceBucket(price, filter) {
+  if (filter === "all") return true;
+  const [min, max] = filter.split("-").map(Number);
+  return price >= min && price <= max;
+}
+
+function getFilters() {
+  return {
+    brand: document.getElementById("filterBrand").value,
+    price: document.getElementById("filterPrice").value,
+    body: document.getElementById("filterBody").value,
+    year: document.getElementById("filterYear").value
+  };
+}
+
+function filteredCars() {
+  const f = getFilters();
+  return CARS.filter((car) => {
+    const byBrand = f.brand === "all" || car.brand === f.brand;
+    const byBody = f.body === "all" || car.body === f.body;
+    return byBrand && byBody && priceBucket(car.price, f.price) && yearBucket(car.year, f.year);
+  });
+}
+
+function renderCars() {
+  const list = filteredCars();
+  countEl.textContent = list.length ? `Найдено: ${list.length}` : "";
+  emptyEl.hidden = list.length > 0;
+  grid.innerHTML = list.map((car) => `
+    <article class="car-card">
+      <img src="${car.img}" alt="${car.alt}" width="400" height="190" loading="lazy">
+      <div class="body">
+        <div class="meta">
+          <span class="badge">${BODY_LABEL[car.body]}</span>
+          <span>${car.year} · ${car.km.toLocaleString("ru-RU")} км</span>
+        </div>
+        <h3>${car.brand} ${car.model}</h3>
+        <p class="price">${money(car.price)}</p>
+        <div class="row">
+          <button class="btn btn-primary" type="button" data-open="${car.id}">Подробнее</button>
+          <a class="btn btn-ghost" href="#testdrive" data-pick="${car.id}">Тест-драйв</a>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+CARS.forEach((car) => {
+  const opt = document.createElement("option");
+  opt.value = `${car.brand} ${car.model}`;
+  opt.textContent = `${car.brand} ${car.model} (${car.year})`;
+  tdCar.appendChild(opt);
+});
+
+document.getElementById("filterForm").addEventListener("change", renderCars);
+document.getElementById("filterForm").addEventListener("reset", () => {
+  setTimeout(renderCars, 0);
+});
+
+grid.addEventListener("click", (e) => {
+  const openBtn = e.target.closest("[data-open]");
+  const pickBtn = e.target.closest("[data-pick]");
+  if (openBtn) openCard(Number(openBtn.dataset.open));
+  if (pickBtn) {
+    const car = CARS.find((c) => c.id === Number(pickBtn.dataset.pick));
+    tdCar.value = `${car.brand} ${car.model}`;
+    document.getElementById("carPrice").value = car.price;
+    syncDownMax();
+    calcCredit();
+  }
+});
+
+function openCard(id) {
+  const car = CARS.find((c) => c.id === id);
+  const dialog = document.getElementById("carDialog");
+  document.getElementById("dialogBody").innerHTML = `
+    <img src="${car.img}" alt="${car.alt}">
+    <div class="dialog-copy">
+      <h3 id="dialogTitle">${car.brand} ${car.model}, ${car.year}</h3>
+      <p>${BODY_LABEL[car.body]} · ${car.km.toLocaleString("ru-RU")} км · диагностика 86 точек · гарантия 24 мес.</p>
+      <p class="price">${money(car.price)}</p>
+      <a class="btn btn-primary" href="#testdrive" data-pick="${car.id}">Записаться на тест-драйв</a>
+    </div>
+  `;
+  dialog.showModal();
+  dialog.querySelector("[data-pick]")?.addEventListener("click", () => dialog.close());
+}
+
+renderCars();
+
+/* Меню */
+const toggle = document.getElementById("navToggle");
+const nav = document.getElementById("site-nav");
+toggle.addEventListener("click", () => {
+  const open = nav.classList.toggle("is-open");
+  toggle.setAttribute("aria-expanded", String(open));
+});
+nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+  nav.classList.remove("is-open");
+  toggle.setAttribute("aria-expanded", "false");
+}));
+
+/* Калькулятор аннуитета + trade-in */
+const priceInput = document.getElementById("carPrice");
+const down = document.getElementById("downPayment");
+const term = document.getElementById("termMonths");
+const rate = document.getElementById("rate");
+const tradeCheck = document.getElementById("useTradein");
+const tradeWrap = document.getElementById("tradeinWrap");
+const tradeVal = document.getElementById("tradeinValue");
+
+function syncDownMax() {
+  const max = Number(priceInput.value) || 0;
+  down.max = String(max);
+  if (Number(down.value) > max) down.value = String(Math.round(max * 0.2));
+}
+
+function annuity(loan, months, annualPct) {
+  if (loan <= 0) return 0;
+  const i = annualPct / 100 / 12;
+  if (i === 0) return loan / months;
+  return loan * (i * Math.pow(1 + i, months)) / (Math.pow(1 + i, months) - 1);
+}
+
+function calcCredit() {
+  const price = Number(priceInput.value) || 0;
+  const trade = tradeCheck.checked ? Number(tradeVal.value) || 0 : 0;
+  let downPay = Number(down.value) + trade;
+  if (downPay > price) downPay = price;
+  const loan = Math.max(0, price - downPay);
+  const months = Number(term.value);
+  const pct = Number(rate.value);
+  const monthly = annuity(loan, months, pct);
+  const total = monthly * months;
+  document.getElementById("downOut").textContent = money(Number(down.value));
+  document.getElementById("termOut").textContent = `${months} мес.`;
+  document.getElementById("rateOut").textContent = `${String(pct).replace(".", ",")}%`;
+  document.getElementById("monthlyPay").textContent = money(monthly);
+  document.getElementById("loanAmount").textContent = money(loan);
+  document.getElementById("overpay").textContent = money(Math.max(0, total - loan));
+  document.getElementById("totalPay").textContent = money(total);
+}
+
+tradeCheck.addEventListener("change", () => {
+  tradeWrap.hidden = !tradeCheck.checked;
+  calcCredit();
+});
+["input", "change"].forEach((ev) => {
+  [priceInput, down, term, rate, tradeVal].forEach((el) => el.addEventListener(ev, () => {
+    if (el === priceInput) syncDownMax();
+    calcCredit();
+  }));
+});
+syncDownMax();
+calcCredit();
+
+/* Форма: простая валидация телефона РФ */
+const phoneRe = /^\+7\s?\d{3}\s?\d{3}-?\d{2}-?\d{2}$|^8\d{10}$|^\+7\d{10}$/;
+
+document.getElementById("tdForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("tdName");
+  const phone = document.getElementById("tdPhone");
+  const agree = document.getElementById("tdAgree");
+  let ok = true;
+
+  function err(id, msg) {
+    const field = document.getElementById(id);
+    const box = document.querySelector(`[data-for="${id}"]`);
+    field?.classList.toggle("is-invalid", Boolean(msg));
+    if (box) box.textContent = msg;
+    if (msg) ok = false;
+  }
+
+  err("tdName", name.value.trim().length < 2 ? "Укажите имя, минимум 2 символа." : "");
+  err("tdPhone", phoneRe.test(phone.value.replaceAll(" ", "")) ? "" : "Формат: +7 900 000-00-00");
+  const agreeErr = document.querySelector('[data-for="tdAgree"]');
+  if (!agree.checked) {
+    agreeErr.textContent = "Нужно согласие на обработку данных.";
+    ok = false;
+  } else agreeErr.textContent = "";
+
+  if (!ok) return;
+  document.getElementById("tdSuccess").hidden = false;
+  e.target.reset();
+});
+
+/* Счётчики цифр доверия */
+const counters = document.querySelectorAll("[data-count]");
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const end = Number(el.dataset.count);
+    const start = performance.now();
+    const dur = 900;
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / dur);
+      el.textContent = String(Math.round(end * t));
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = String(end);
+    } else requestAnimationFrame(tick);
+    io.unobserve(el);
+  });
+}, { threshold: 0.4 });
+counters.forEach((el) => io.observe(el));
+
+</script>
+</body>
+</html>

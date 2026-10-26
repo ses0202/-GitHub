@@ -1,0 +1,542 @@
+/* АТЛАС ДРАЙВ — палитра и ритм. Mobile-first. */
+:root {
+  --bg: #101214;
+  --bg-2: #181b1f;
+  --paper: #f2eee6;
+  --paper-2: #e7e1d6;
+  --ink: #14161a;
+  --muted: #6a6e75;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-dark: rgba(20, 22, 26, 0.12);
+  --accent: #d2652b;
+  --accent-hover: #e0783c;
+  --accent-press: #b45220;
+  --cream: #efe8db;
+  --radius: 4px;
+  --shadow: 0 18px 40px rgba(16, 18, 20, 0.18);
+  --font: "Plus Jakarta Sans", system-ui, sans-serif;
+  --display: "Instrument Serif", Georgia, serif;
+  --space: clamp(1.25rem, 4vw, 2.5rem);
+  --max: 1120px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--cream);
+  background: var(--bg);
+  line-height: 1.55;
+  font-size: 16px;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.2rem, 6vw, 4.4rem); margin: 0 0 1rem; }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin: 0 0 0.5rem; }
+h3 { font-size: 1.35rem; margin: 0 0 0.5rem; }
+
+p { margin: 0 0 1rem; color: #c5c1b8; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  z-index: 100;
+}
+.skip-link:focus { top: 0.5rem; }
+
+.container {
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 48px;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font: 600 0.95rem/1 var(--font);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s;
+}
+.btn:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:active { background: var(--accent-press); }
+.btn-primary:disabled {
+  background: #5c3a2c;
+  color: #b9a89f;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: transparent;
+  border-color: rgba(239, 232, 219, 0.35);
+  color: var(--cream);
+}
+.btn-ghost:hover { border-color: #fff; }
+.btn-text {
+  background: none;
+  border: 0;
+  color: var(--accent);
+  min-height: 40px;
+  padding: 0;
+  align-self: end;
+}
+.btn-text:hover { text-decoration: underline; }
+
+/* Шапка */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(16, 18, 20, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 64px;
+}
+.logo {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+.logo span { color: var(--accent); }
+.logo-mark {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  display: inline-block;
+  transform: rotate(45deg);
+}
+.header-phone {
+  display: none;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.nav-toggle {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 0;
+  display: grid;
+  gap: 6px;
+  place-content: center;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--cream);
+}
+.site-nav {
+  display: none;
+  position: absolute;
+  inset: 64px 0 auto 0;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 1.25rem 1.25rem;
+}
+.site-nav.is-open { display: block; }
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.site-nav a {
+  text-decoration: none;
+  font-weight: 500;
+}
+.site-nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  align-items: end;
+  padding: 5rem 0 3rem;
+  overflow: hidden;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.05);
+}
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 18, 20, 0.2) 0%, rgba(16, 18, 20, 0.88) 78%),
+    linear-gradient(90deg, rgba(16, 18, 20, 0.55), transparent 55%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 40rem; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.lead { font-size: 1.05rem; max-width: 36rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 2rem; }
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+.hero-stats dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9a958c;
+}
+.hero-stats dd {
+  margin: 0.2rem 0 0;
+  font-family: var(--display);
+  font-size: 1.4rem;
+}
+
+/* Секции */
+.section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.section-head {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.section-index {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin: 0;
+}
+.catalog { background: var(--paper); color: var(--ink); }
+.catalog p, .calc-section p { color: #5c5a56; }
+.catalog h2, .calc-section h2, .trust h2, .contact h2 { color: inherit; }
+
+.filters {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+.filters label,
+.td-form label,
+.calc-card label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5c5a56;
+}
+select, input, textarea {
+  font: 500 1rem/1.3 var(--font);
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.75rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+select:hover, input:hover, textarea:hover { border-color: #9a8f82; }
+.catalog-count { font-size: 0.9rem; margin-bottom: 1rem; }
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+.car-card {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+.car-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #ddd;
+}
+.car-card .body { padding: 1rem 1.1rem 1.15rem; }
+.car-card .meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+.car-card h3 { margin: 0 0 0.35rem; color: var(--ink); }
+.car-card .price {
+  font-family: var(--display);
+  font-size: 1.55rem;
+  margin: 0.4rem 0 0.9rem;
+}
+.car-card .row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.empty-state { color: #7a756c; }
+
+/* Преимущества */
+.advantages { background: var(--bg-2); }
+.adv-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.adv-grid li {
+  background: var(--bg);
+  padding: 1.5rem 1.25rem;
+}
+.adv-grid p { color: #b7b2a8; }
+.adv-grid a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.adv-grid a:hover { text-decoration: underline; }
+
+/* Калькулятор */
+.calc-section { background: var(--paper); color: var(--ink); }
+.calc-layout { display: grid; gap: 1.5rem; }
+.calc-card, .calc-result {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+.calc-card fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 1rem; }
+input[type="range"] { padding: 0; accent-color: var(--accent); }
+.check {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.95rem !important;
+  color: var(--ink) !important;
+}
+.check input { width: auto; accent-color: var(--accent); }
+.calc-result .result-label { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.12em; }
+.result-sum {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+.calc-result ul { list-style: none; margin: 0 0 1.25rem; padding: 0; }
+.calc-result li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--line-dark);
+  color: #5c5a56;
+}
+
+/* Доверие */
+.trust { background: var(--bg); }
+.trust-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.trust-numbers strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 2.4rem;
+  color: var(--accent);
+}
+.trust-numbers span { color: #9a958c; font-size: 0.9rem; }
+.reviews { display: grid; gap: 1rem; }
+.review {
+  border: 1px solid var(--line);
+  padding: 1.25rem;
+  background: var(--bg-2);
+}
+.stars { color: var(--accent); margin: 0 0 0.6rem; letter-spacing: 0.15em; }
+.review footer { color: #8d8980; font-size: 0.85rem; }
+.certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 1.5rem 0 0;
+  margin: 0;
+}
+.certs li {
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.82rem;
+  color: #c5c1b8;
+}
+
+/* Контакты */
+.contact { background: var(--paper); color: var(--ink); }
+.contact-layout { display: grid; gap: 2rem; }
+.td-form { display: grid; gap: 0.9rem; }
+.field-error { color: #b42318; font-size: 0.8rem; min-height: 0; text-transform: none; letter-spacing: 0; font-weight: 500; }
+input.is-invalid, select.is-invalid { border-color: #b42318; }
+.form-success { color: #1f6f57; font-weight: 600; }
+.contacts-card iframe {
+  width: 100%;
+  height: 220px;
+  border: 0;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+address { font-style: normal; line-height: 1.7; }
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 0;
+  font-size: 0.85rem;
+  color: #8d8980;
+}
+.footer-inner { display: flex; justify-content: space-between; gap: 1rem; }
+.site-footer a { color: var(--cream); }
+
+/* Диалог карточки */
+.car-dialog {
+  width: min(92vw, 560px);
+  border: 0;
+  padding: 0;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 8px;
+}
+.car-dialog::backdrop { background: rgba(16, 18, 20, 0.62); }
+.dialog-close {
+  position: absolute;
+  right: 0.4rem;
+  top: 0.3rem;
+  border: 0;
+  background: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.car-dialog img { width: 100%; height: 220px; object-fit: cover; }
+.dialog-copy { padding: 1.2rem 1.3rem 1.5rem; }
+
+@media (min-width: 720px) {
+  .filters {
+    grid-template-columns: repeat(4, 1fr) auto;
+    align-items: end;
+  }
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .adv-grid { grid-template-columns: 1fr 1fr; }
+  .calc-layout {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+  .calc-layout .section-head { grid-column: 1 / -1; }
+  .trust-numbers { grid-template-columns: repeat(4, 1fr); }
+  .reviews { grid-template-columns: repeat(3, 1fr); }
+  .contact-layout { grid-template-columns: 1.1fr 0.9fr; }
+  .header-phone { display: inline; }
+}
+
+@media (min-width: 960px) {
+  .nav-toggle { display: none; }
+  .site-nav {
+    display: block;
+    position: static;
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+  .site-nav ul {
+    display: flex;
+    gap: 1.35rem;
+  }
+  .card-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}

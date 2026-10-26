@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="АТЛАС ДРАЙВ — новые и проверенные автомобили с пробегом в Москве. Подбор, кредит, trade-in, тест-драйв.">
+  <title>АТЛАС ДРАЙВ — автосалон новых и проверенных авто</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Пропуск к контенту: WCAG 2.4.1 -->
+  <a class="skip-link" href="#main">К основному содержимому</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="АТЛАС ДРАЙВ — на главную">
+        <span class="logo-mark" aria-hidden="true"></span>
+        АТЛАС<span>ДРАЙВ</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="navToggle">
+        <span class="sr-only">Меню</span>
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Основное меню">
+        <ul>
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#advantages">Почему мы</a></li>
+          <li><a href="#calc">Кредит</a></li>
+          <li><a href="#trust">Отзывы</a></li>
+          <li><a href="#testdrive">Тест-драйв</a></li>
+        </ul>
+      </nav>
+      <a class="header-phone" href="tel:+74951204590">+7 495 120-45-90</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1. Hero: знакомство и главный оффер -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=70"
+          alt="Тёмный седан в студийном свете — витрина автосалона АТЛАС ДРАЙВ"
+          width="1800"
+          height="1100">
+      </div>
+      <div class="container hero-content">
+        <p class="eyebrow">Москва · новые и с пробегом</p>
+        <h1 id="hero-title">Авто, которое можно проверить до сделки — не после.</h1>
+        <p class="lead">Открытый пробег, история по VIN, понятный платёж и тест-драйв в день обращения. Без скрытых комиссий в карточке.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#catalog">Подобрать авто</a>
+          <a class="btn btn-ghost" href="#testdrive">Записаться на тест-драйв</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>в наличии</dt><dd>86 авто</dd></div>
+          <div><dt>гарантия на б/у</dt><dd>24 мес.</dd></div>
+          <div><dt>кредит от</dt><dd>4,9%</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 2. Каталог: подбор по фильтрам -->
+    <section class="section catalog" id="catalog" aria-labelledby="catalog-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-index">01</p>
+          <div>
+            <h2 id="catalog-title">Подбор из наличия</h2>
+            <p>Фильтры работают сразу по карточкам. Цены — как на складе, без «от».</p>
+          </div>
+        </header>
+
+        <form class="filters" id="filterForm" aria-label="Фильтры каталога">
+          <label>
+            Марка
+            <select name="brand" id="filterBrand">
+              <option value="all">Все марки</option>
+              <option value="BMW">BMW</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Haval">Haval</option>
+              <option value="Kia">Kia</option>
+              <option value="Tesla">Tesla</option>
+              <option value="Volkswagen">Volkswagen</option>
+              <option value="Geely">Geely</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+            </select>
+          </label>
+          <label>
+            Цена
+            <select name="price" id="filterPrice">
+              <option value="all">Любая</option>
+              <option value="0-2500000">до 2,5 млн ₽</option>
+              <option value="2500000-4000000">2,5–4 млн ₽</option>
+              <option value="4000000-99999999">от 4 млн ₽</option>
+            </select>
+          </label>
+          <label>
+            Кузов
+            <select name="body" id="filterBody">
+              <option value="all">Любой</option>
+              <option value="sedan">Седан</option>
+              <option value="suv">Кроссовер / SUV</option>
+              <option value="hatch">Хэтчбек</option>
+            </select>
+          </label>
+          <label>
+            Год
+            <select name="year" id="filterYear">
+              <option value="all">Любой</option>
+              <option value="2024">2024+</option>
+              <option value="2021">2021–2023</option>
+              <option value="2018">2018–2020</option>
+            </select>
+          </label>
+          <button class="btn btn-text" type="reset" id="filterReset">Сбросить</button>
+        </form>
+
+        <p class="catalog-count" id="catalogCount" aria-live="polite"></p>
+        <div class="card-grid" id="carGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>Нет авто по фильтрам. Сбросьте условия или оставьте заявку — подберём со склада партнёров.</p>
+      </div>
+    </section>
+
+    <!-- 3. Преимущества: доверие до калькулятора -->
+    <section class="section advantages" id="advantages" aria-labelledby="adv-title">
+      <div class="container">
+        <header class="section-head invert">
+          <p class="section-index">02</p>
+          <div>
+            <h2 id="adv-title">Что снимает риск покупки</h2>
+            <p>Четыре сервиса, без которых карточку не публикуем.</p>
+          </div>
+        </header>
+        <ul class="adv-grid">
+          <li>
+            <h3>Диагностика 86 точек</h3>
+            <p>Ходовая, ЛКП, ЭБУ, утечки. Отчёт в PDF прикреплён к каждому авто с пробегом.</p>
+            <a href="#testdrive">Смотреть образец отчёта</a>
+          </li>
+          <li>
+            <h3>Гарантия 24 месяца</h3>
+            <p>Двигатель, КПП и электрика. Ремонт в нашем сервисе или выплата по калькуляции.</p>
+            <a href="#testdrive">Условия гарантии</a>
+          </li>
+          <li>
+            <h3>Trade-in за 40 минут</h3>
+            <p>Осмотр на месте, сумма фиксируется в договоре. Можно сразу в зачёт первого взноса.</p>
+            <a href="#calc">Оценить свой авто</a>
+          </li>
+          <li>
+            <h3>Кредит и лизинг</h3>
+            <p>8 банков, лизинг для ИП. Ставка на экране — не «от», а расчёт по выбранному авто.</p>
+            <a href="#calc">Рассчитать платёж</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Калькулятор кредита и trade-in -->
+    <section class="section calc-section" id="calc" aria-labelledby="calc-title">
+      <div class="container calc-layout">
+        <header class="section-head">
+          <p class="section-index">03</p>
+          <div>
+            <h2 id="calc-title">Платёж до звонка менеджеру</h2>
+            <p>Меняйте взнос, срок и trade-in — сумма обновляется сразу. Это ориентир, не оферта банка.</p>
+          </div>
+        </header>
+
+        <form class="calc-card" id="creditForm">
+          <fieldset>
+            <legend class="sr-only">Параметры кредита</legend>
+            <label>
+              Стоимость авто, ₽
+              <input type="number" id="carPrice" min="400000" max="15000000" step="50000" value="2890000">
+            </label>
+            <label>
+              Первый взнос, ₽
+              <input type="range" id="downPayment" min="0" max="2890000" step="10000" value="580000">
+              <output id="downOut">580 000 ₽</output>
+            </label>
+            <label>
+              Срок, мес.
+              <input type="range" id="termMonths" min="12" max="84" step="12" value="60">
+              <output id="termOut">60 мес.</output>
+            </label>
+            <label>
+              Ставка, % годовых
+              <input type="range" id="rate" min="4.9" max="22" step="0.1" value="11.9">
+              <output id="rateOut">11,9%</output>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="useTradein">
+              Учесть trade-in в первом взносе
+            </label>
+            <label id="tradeinWrap" hidden>
+              Оценка вашего авто, ₽
+              <input type="number" id="tradeinValue" min="0" max="8000000" step="10000" value="650000">
+            </label>
+          </fieldset>
+        </form>
+
+        <aside class="calc-result" aria-live="polite">
+          <p class="result-label">Ежемесячный платёж</p>
+          <p class="result-sum" id="monthlyPay">—</p>
+          <ul>
+            <li>Кредит <span id="loanAmount">—</span></li>
+            <li>Переплата <span id="overpay">—</span></li>
+            <li>Итого к возврату <span id="totalPay">—</span></li>
+          </ul>
+          <a class="btn btn-primary" href="#testdrive">Оставить заявку на одобрение</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 5. Отзывы и цифры доверия -->
+    <section class="section trust" id="trust" aria-labelledby="trust-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-index">04</p>
+          <div>
+            <h2 id="trust-title">Не слоган, а след сделок</h2>
+            <p>Цифры с 2021 года. Отзывы — с именем, моделью и датой, не «анонимный клиент».</p>
+          </div>
+        </header>
+
+        <div class="trust-numbers">
+          <div><strong data-count="1240">0</strong><span>проданных авто</span></div>
+          <div><strong data-count="24">0</strong><span>месяца гарантии</span></div>
+          <div><strong data-count="4">0</strong><span>часа средний подбор</span></div>
+          <div><strong>4,8</strong><span>оценка на Яндексе</span></div>
+        </div>
+
+        <div class="reviews">
+          <article class="review">
+            <p class="stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <p>Брали Camry 2022. VIN пробили при мне, кузовной отчёт показали до предоплаты. Платёж совпал с калькулятором на сайте — редкость.</p>
+            <footer>Анна К. · Toyota Camry · март 2026</footer>
+          </article>
+          <article class="review">
+            <p class="stars" aria-label="Оценка 5 из 5">★★★★★</p>
+            <p>Сдали Polo в trade-in, разницу закрыли кредитом за один визит. Тест-драйв Jolion — без «подождите менеджера 40 минут».</p>
+            <footer>Игорь С. · Haval Jolion · январь 2026</footer>
+          </article>
+          <article class="review">
+            <p class="stars" aria-label="Оценка 4 из 5">★★★★☆</p>
+            <p>По Model 3 торг занял день, но историю батареи и сервис Tesla отдали сразу. Минус: очередь на оформление в субботу.</p>
+            <footer>Марат Д. · Tesla Model 3 · декабрь 2025</footer>
+          </article>
+        </div>
+
+        <ul class="certs">
+          <li>Официальный партнёр 6 банков</li>
+          <li>Диагностика по регламенту АСД</li>
+          <li>Работаем по 54-ФЗ, чек в день сделки</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. Тест-драйв и контакты -->
+    <section class="section contact" id="testdrive" aria-labelledby="td-title">
+      <div class="container contact-layout">
+        <div>
+          <header class="section-head">
+            <p class="section-index">05</p>
+            <div>
+              <h2 id="td-title">Запись на тест-драйв</h2>
+              <p>Ответим в рабочее время за 15 минут. Поля с * обязательны.</p>
+            </div>
+          </header>
+
+          <form class="td-form" id="tdForm" novalidate>
+            <label>
+              Имя *
+              <input type="text" name="name" id="tdName" autocomplete="name" required minlength="2">
+              <span class="field-error" data-for="tdName"></span>
+            </label>
+            <label>
+              Телефон *
+              <input type="tel" name="phone" id="tdPhone" autocomplete="tel" inputmode="tel" required placeholder="+7 900 000-00-00">
+              <span class="field-error" data-for="tdPhone"></span>
+            </label>
+            <label>
+              Авто для теста
+              <select name="car" id="tdCar">
+                <option value="">Подберёте менеджер</option>
+              </select>
+            </label>
+            <label>
+              Комментарий
+              <textarea name="comment" id="tdComment" rows="3" maxlength="400" placeholder="Удобное время, trade-in, кредит"></textarea>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="tdAgree" required>
+              Согласен на обработку данных для записи
+            </label>
+            <span class="field-error" data-for="tdAgree"></span>
+            <button class="btn btn-primary" type="submit">Записаться</button>
+            <p class="form-success" id="tdSuccess" hidden role="status">Заявка принята. Перезвоним с номера салона +7 495 120-45-90.</p>
+          </form>
+        </div>
+
+        <aside class="contacts-card" aria-labelledby="contacts-title">
+          <h3 id="contacts-title">Салон на Ленинградке</h3>
+          <address>
+            Москва, Ленинградский пр-т, 80к17<br>
+            <a href="tel:+74951204590">+7 495 120-45-90</a><br>
+            ежедневно 09:00–21:00
+          </address>
+          <iframe
+            title="Карта: АТЛАС ДРАЙВ, Ленинградский проспект"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=37.532%2C55.791%2C37.555%2C55.803&amp;layer=mapnik&amp;marker=55.797%2C37.543"></iframe>
+          <a class="btn btn-ghost" href="https://yandex.ru/maps/?text=Москва%20Ленинградский%20проспект%2080" rel="noopener noreferrer" target="_blank">Открыть в картах</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 АТЛАС ДРАЙВ. Учебный макет главной страницы, лабораторная №2.</p>
+      <a href="#top">Наверх</a>
+    </div>
+  </footer>
+
+  <!-- Модалка карточки авто -->
+  <dialog class="car-dialog" id="carDialog" aria-labelledby="dialogTitle">
+    <form method="dialog">
+      <button class="dialog-close" value="close" aria-label="Закрыть">×</button>
+    </form>
+    <div id="dialogBody"></div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
